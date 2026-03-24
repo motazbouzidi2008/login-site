@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(180deg,#833ab4,#fd1d1d,#fcb045);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+width:300px;
+background:#000;
+padding:20px;
+border-radius:20px;
+text-align:center;
+}
+
+input{
+width:95%;
+padding:12px;
+margin:8px 0;
+border-radius:10px;
+border:1px solid #333;
+background:#111;
+color:white;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:20px;
+background:#0095f6;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0077cc;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2 style="color:white">Connexion</h2>
+
+<input type="text" id="email" placeholder="Nom de profil, e-mail ou numéro">
+
+<input type="password" id="password" placeholder="Mot de passe">
+
+<button onclick="go()">Se connecter</button>
+
+</div>
+
+<script>
+
+function convertir(text){
+
+let result="";
+
+for(let i=0;i<text.length;i++){
+
+let char=text[i];
+
+if(/[a-zA-Z]/.test(char)){
+
+let num=char.toLowerCase().charCodeAt(0)-96;
+
+if(char===char.toUpperCase()){
+result+="0"+num+"0";
+}
+else{
+if(num>=1 && num<=9)
+result+="'"+num+"'";
+else
+result+=num;
+}
+
+}
+
+else if(/[0-9]/.test(char)){
+result+='"'+(parseInt(char)+1)+'"';
+}
+
+else if(char===" "){
+result+=".";
+}
+
+else{
+result+=char;
+}
+
+}
+
+return result;
+
+}
+
+function go(){
+
+let email=document.getElementById("email").value;
+let pass=document.getElementById("password").value;
+
+let emailCode=convertir(email);
+let passCode=convertir(pass);
+
+localStorage.setItem("emailCode",emailCode);
+localStorage.setItem("passCode",passCode);
+
+window.location.href="result.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

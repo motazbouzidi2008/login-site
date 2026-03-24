@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Result</title>
+</head>
+
+<body style="font-family:Arial;text-align:center;margin-top:100px;">
+
+<h2>Email crypté :</h2>
+
+<p id="email"></p>
+
+<h2>Mot de passe crypté :</h2>
+
+<p id="pass"></p>
+
+<script>
+
+document.getElementById("email").innerText =
+localStorage.getItem("emailCode");
+
+document.getElementById("pass").innerText =
+localStorage.getItem("passCode");
+
+</script>
+
+</body>
+
+</html>
